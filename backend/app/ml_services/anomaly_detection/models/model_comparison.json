@@ -1,0 +1,38 @@
+[
+    {
+        "model": "Isolation Forest",
+        "precision": 0.29411764705882354,
+        "recall": 0.5555555555555556,
+        "f1": 0.38461538461538464,
+        "confusion_matrix": [
+            [
+                786,
+                12
+            ],
+            [
+                4,
+                5
+            ]
+        ],
+        "training_time_sec": 0.1707606315612793,
+        "inference_latency_ms": 0.014437471032881235
+    },
+    {
+        "model": "LSTM Autoencoder",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "confusion_matrix": [
+            [
+                784,
+                9
+            ],
+            [
+                9,
+                0
+            ]
+        ],
+        "training_time_sec": 1.7568137645721436,
+        "inference_latency_ms": 0.007000052720828543
+    }
+]

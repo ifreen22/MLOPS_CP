@@ -1,0 +1,152 @@
+{
+    "0": [
+        "<NUM> info dfs.datablockscanner: verification succeeded for <BLOCK>",
+        "<NUM> info dfs.datablockscanner: verification succeeded for <BLOCK>",
+        "<NUM> info dfs.datablockscanner: verification succeeded for <BLOCK>"
+    ],
+    "1": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/<BLOCK>"
+    ],
+    "2": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/sortrand2/_temporary/_task_200811101024_0003_r_000152_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000138_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/sortrand/_temporary/_task_200811092030_0002_r_000169_0/part-<NUM>. <BLOCK>"
+    ],
+    "3": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>"
+    ],
+    "4": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.addstoredblock: blockmap updated: <IP>:<NUM> is added to <BLOCK> size <NUM>"
+    ],
+    "5": [
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:",
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:",
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:"
+    ],
+    "6": [
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:",
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:",
+        "<NUM> warn dfs.datanode$dataxceiver: <IP>:<NUM>:got exception while serving <BLOCK> to /<IP>:"
+    ],
+    "7": [
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>"
+    ],
+    "8": [
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating"
+    ],
+    "9": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>"
+    ],
+    "10": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.delete: <BLOCK> is added to invalidset of <IP>:<NUM>"
+    ],
+    "11": [
+        "<NUM> info dfs.datanode$dataxceiver: <IP>:<NUM> served block <BLOCK> to /<IP>",
+        "<NUM> info dfs.datanode$dataxceiver: <IP>:<NUM> served block <BLOCK> to /<IP>",
+        "<NUM> info dfs.datanode$dataxceiver: <IP>:<NUM> served block <BLOCK> to /<IP>"
+    ],
+    "12": [
+        "<NUM> info dfs.datanode$dataxceiver: receiving block <BLOCK> src: /<IP>:<NUM> dest: /<IP>:<NUM>",
+        "<NUM> info dfs.datanode$dataxceiver: receiving block <BLOCK> src: /<IP>:<NUM> dest: /<IP>:<NUM>",
+        "<NUM> info dfs.datanode$dataxceiver: receiving block <BLOCK> src: /<IP>:<NUM> dest: /<IP>:<NUM>"
+    ],
+    "13": [
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>"
+    ],
+    "14": [
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>",
+        "<NUM> info dfs.datanode$packetresponder: received block <BLOCK> of size <NUM> from /<IP>"
+    ],
+    "15": [
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating"
+    ],
+    "16": [
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating",
+        "<NUM> info dfs.datanode$packetresponder: packetresponder <NUM> for block <BLOCK> terminating"
+    ],
+    "17": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/rand/_temporary/_task_200811092030_0001_m_001866_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/rand7/_temporary/_task_200811101024_0014_m_001394_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/rand6/_temporary/_task_200811101024_0013_m_000523_0/part-<NUM>. <BLOCK>"
+    ],
+    "18": [
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/randtxt5/_temporary/_task_200811101024_0012_m_001635_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/randtxt4/_temporary/_task_200811101024_0010_m_001716_0/part-<NUM>. <BLOCK>",
+        "<NUM> info dfs.fsnamesystem: block* namesystem.allocateblock: /user/root/randtxt3/_temporary/_task_200811101024_0007_m_000374_0/part-<NUM>. <BLOCK>"
+    ],
+    "19": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir63/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir62/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir61/<BLOCK>"
+    ],
+    "20": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir57/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir57/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir57/<BLOCK>"
+    ],
+    "21": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir38/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir38/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir38/<BLOCK>"
+    ],
+    "22": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir24/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir24/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir24/<BLOCK>"
+    ],
+    "23": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir15/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir15/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir15/<BLOCK>"
+    ],
+    "24": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir33/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir33/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir33/<BLOCK>"
+    ],
+    "25": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir32/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir32/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir32/<BLOCK>"
+    ],
+    "26": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir36/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir36/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir36/<BLOCK>"
+    ],
+    "27": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir23/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir0/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir29/<BLOCK>"
+    ],
+    "28": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir34/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir34/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir34/<BLOCK>"
+    ],
+    "-1": [
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir42/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir2/<BLOCK>",
+        "<NUM> info dfs.fsdataset: deleting block <BLOCK> file /mnt/hadoop/dfs/data/current/subdir54/<BLOCK>"
+    ]
+}

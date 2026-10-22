@@ -1,0 +1,36 @@
+project: AIOps Sentinel
+module: Risk Prediction Engine
+version: "1.0.0"
+
+environment:
+  python_version: "3.13"
+  random_seed: 42
+
+dataset:
+  name: "Synthetic Deployment Trace Simulator"
+  samples: 5000
+  train_split: 0.6
+  val_split: 0.2
+  test_split: 0.2
+  target_imbalance: 0.2 # 20% fail rate target
+
+models:
+  evaluated:
+    - Logistic Regression
+    - Decision Tree
+    - Random Forest
+    - XGBoost
+    - LightGBM
+    - CatBoost
+    - SVM
+    - MLP Classifier
+  selected: LightGBM
+
+hyperparameters:
+  max_depth: 3
+  n_estimators: 100
+  learning_rate: default (0.1)
+
+metrics:
+  primary: F1 Score
+  secondary: ROC AUC, Brier Calibration

@@ -1,0 +1,44 @@
+project: AIOps Sentinel
+module: Root Cause Analysis Engine
+version: "1.0.0"
+
+environment:
+  python_version: "3.13"
+  device: "CPU"
+
+dataset:
+  name: "Synthetic Sock Shop Telemetry"
+  nodes: 7
+  samples: 500
+  train_test_split: 0.2
+  seed: 42
+
+features:
+  - cpu_usage
+  - memory_usage
+  - latency_ms
+  - error_rate
+  - anomaly_score
+
+models:
+  baseline:
+    - PageRank
+    - RandomForest
+    - XGBoost
+  gnn:
+    - GCN
+    - GraphSAGE
+    - GAT
+
+evaluation:
+  metrics:
+    - top_1_accuracy
+    - top_3_accuracy
+    - mrr
+    - precision
+    - recall
+    - f1
+  random_seeds:
+    torch: 42
+    numpy: 42
+    sklearn: 42

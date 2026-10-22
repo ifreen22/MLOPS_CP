@@ -1,0 +1,467 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator client_py {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users       User[]
+  clusters    Cluster[]
+  services    Service[]
+  incidents   Incident[]
+  alerts      Alert[]
+  playbooks   Playbook[]
+  policies    Policy[]
+  notifications Notification[]
+  auditLogs   AuditLog[]
+}
+
+model User {
+  id             String   @id @default(uuid())
+  organizationId String
+  email          String   @unique
+  passwordHash   String
+  firstName      String?
+  lastName       String?
+  role           String   @default("VIEWER")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  authSessions   AuthSession[]
+  comments       Comment[]
+  notifications  Notification[]
+  auditLogs      AuditLog[]
+  incidentHistories IncidentHistory[]
+  assignedIncidents Incident[] @relation("AssignedTo")
+}
+
+model AuthSession {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+}
+
+
+
+model Cluster {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  region         String?
+  provider       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  services       Service[]
+}
+
+model Service {
+  id             String   @id @default(uuid())
+  organizationId String
+  clusterId      String
+  name           String
+  description    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  cluster        Cluster      @relation(fields: [clusterId], references: [id])
+  deployments    Deployment[]
+  alerts         Alert[]
+  incidents      Incident[]
+  logs           Log[]
+  metrics        Metric[]
+  traces         Trace[]
+  pods           Pod[]
+}
+
+model Deployment {
+  id             String   @id @default(uuid())
+  serviceId      String
+  version        String
+  status String @default("PENDING")
+  deployedAt     DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  service        Service  @relation(fields: [serviceId], references: [id])
+  riskScores     RiskScore[]
+}
+
+
+
+model RiskScore {
+  id             String   @id @default(uuid())
+  deploymentId   String
+  score          Float
+  factors        String
+  createdAt      DateTime @default(now())
+
+  deployment     Deployment @relation(fields: [deploymentId], references: [id])
+}
+
+model Alert {
+  id             String   @id @default(uuid())
+  organizationId String
+  serviceId      String
+  incidentId     String?
+  title          String
+  description    String?
+  severity String
+  status String @default("OPEN")
+  firedAt        DateTime @default(now())
+  resolvedAt     DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  service        Service      @relation(fields: [serviceId], references: [id])
+  incident       Incident?    @relation(fields: [incidentId], references: [id])
+}
+
+
+
+
+
+model Incident {
+  id             String   @id @default(uuid())
+  organizationId String
+  serviceId      String
+  assigneeId     String?
+  title          String
+  description    String?
+  status String @default("OPEN")
+  severity String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  resolvedAt     DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  service        Service      @relation(fields: [serviceId], references: [id])
+  assignee       User?        @relation("AssignedTo", fields: [assigneeId], references: [id])
+  alerts         Alert[]
+  comments       Comment[]
+  history        IncidentHistory[]
+  playbookExecutions PlaybookExecution[]
+}
+
+
+
+model IncidentHistory {
+  id             String   @id @default(uuid())
+  incidentId     String
+  userId         String
+  action         String
+  details        String?
+  createdAt      DateTime @default(now())
+
+  incident       Incident @relation(fields: [incidentId], references: [id])
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model Comment {
+  id             String   @id @default(uuid())
+  incidentId     String
+  userId         String
+  content        String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  incident       Incident @relation(fields: [incidentId], references: [id])
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model Log {
+  id             String   @id @default(uuid())
+  serviceId      String
+  level          String
+  message        String
+  metadata       String?
+  timestamp      DateTime @default(now())
+
+  service        Service  @relation(fields: [serviceId], references: [id])
+}
+
+model Metric {
+  id             String   @id @default(uuid())
+  serviceId      String
+  name           String
+  value          Float
+  tags           String?
+  timestamp      DateTime @default(now())
+
+  service        Service  @relation(fields: [serviceId], references: [id])
+}
+
+model Trace {
+  id             String   @id @default(uuid())
+  serviceId      String
+  traceId        String
+  spanId         String
+  parentSpanId   String?
+  name           String
+  durationMs     Int
+  status         String
+  timestamp      DateTime @default(now())
+
+  service        Service  @relation(fields: [serviceId], references: [id])
+}
+
+model Playbook {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  steps          String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  executions     PlaybookExecution[]
+}
+
+model PlaybookExecution {
+  id             String   @id @default(uuid())
+  playbookId     String
+  incidentId     String
+  status         String
+  result         String?
+  startedAt      DateTime @default(now())
+  completedAt    DateTime?
+
+  playbook       Playbook @relation(fields: [playbookId], references: [id])
+  incident       Incident @relation(fields: [incidentId], references: [id])
+}
+
+model Policy {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  description    String?
+  rules          String
+  isEnabled      Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+}
+
+model Notification {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String
+  type           String
+  message        String
+  isRead         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model AuditLog {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String
+  action         String
+  resource       String
+  resourceId     String?
+  details        String?
+  createdAt      DateTime @default(now())
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model Namespace {
+  id             String   @id @default(uuid())
+  clusterId      String
+  name           String
+  createdAt      DateTime @default(now())
+  pods           Pod[]
+}
+
+model Node {
+  id             String   @id @default(uuid())
+  clusterId      String
+  name           String
+  status         String
+  cpuCores       Int?
+  memoryBytes    BigInt?
+  createdAt      DateTime @default(now())
+  pods           Pod[]
+}
+
+model Pod {
+  id             String   @id @default(uuid())
+  namespaceId    String
+  nodeId         String
+  serviceId      String?
+  name           String
+  status         String
+  restarts       Int      @default(0)
+  createdAt      DateTime @default(now())
+
+  namespace      Namespace @relation(fields: [namespaceId], references: [id])
+  node           Node      @relation(fields: [nodeId], references: [id])
+  service        Service?  @relation(fields: [serviceId], references: [id])
+}
+
+model Situation {
+  id               String   @id @default(uuid())
+  title            String
+  summary          String?
+  severity         String   @default("LOW")
+  status           String   @default("OPEN")
+  affectedServices String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  clusters         AlertCluster[]
+}
+
+model AlertCluster {
+  id                  String   @id @default(uuid())
+  situationId         String?
+  title               String
+  summary             String?
+  status              String
+  representativeAlert String?
+  affectedServices    String?
+  severity            String   @default("LOW")
+  timeWindow          String?
+  confidence          Float    @default(0.0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  situation           Situation? @relation(fields: [situationId], references: [id])
+}
+
+model Prediction {
+  id             String   @id @default(uuid())
+  targetId       String
+  modelName      String
+  prediction     Float
+  confidence     Float
+  timestamp      DateTime @default(now())
+}
+
+model Recommendation {
+  id             String   @id @default(uuid())
+  incidentId     String
+  actionType     String
+  description    String
+  confidence     Float
+  createdAt      DateTime @default(now())
+}
+
+model MLExperiment {
+  id             String   @id @default(uuid())
+  modelName      String
+  version        String
+  parameters     String
+  metrics        String
+  status         String
+  createdAt      DateTime @default(now())
+}
+
+model K8sEvent {
+  id             String   @id @default(uuid())
+  clusterId      String
+  namespace      String
+  involvedObject String
+  reason         String
+  message        String
+  type           String
+  timestamp      DateTime @default(now())
+}
+
+
+
+model HostTelemetry {
+  id             String   @id @default(uuid())
+  timestamp      DateTime @default(now())
+  cpuUsage       Float
+  memoryTotal    BigInt
+  memoryUsed     BigInt
+  memoryPercent  Float
+  diskTotal      BigInt
+  diskUsed       BigInt
+  diskPercent    Float
+  netSent        BigInt
+  netRecv        BigInt
+  batteryPercent Float?
+  temperature    Float?
+}
+
+model HostProcess {
+  id             String   @id @default(uuid())
+  telemetryId    String
+  pid            Int
+  name           String
+  cpuPercent     Float
+  memoryPercent  Float
+  exePath        String?
+  timestamp      DateTime @default(now())
+}
+
+model SystemSettings {
+  id             String   @id @default(uuid())
+  isMonitoring   Boolean  @default(false)
+  autoRecovery   Boolean  @default(false)
+  pollingInterval Int     @default(2) // seconds
+  updatedAt      DateTime @updatedAt
+}
+
+model ServiceLevelObjective {
+  id             String   @id @default(uuid())
+  name           String
+  description    String?
+  metric         String
+  threshold      Float
+  targetPercent  Float
+  windowHours    Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model ActionQueue {
+  id             String   @id @default(uuid())
+  actionType     String   // e.g. "TERMINATE_PROCESS", "CLEAN_DISK"
+  target         String?  // e.g. PID or path
+  status         String   @default("PENDING") // PENDING, SUCCESS, FAILED
+  createdAt      DateTime @default(now())
+  completedAt    DateTime?
+  organizationId String?
+  requestedByUserId String?
+  requestedByEmail String?
+  processName    String?
+  processCreateTime Float?
+  result         String?
+}

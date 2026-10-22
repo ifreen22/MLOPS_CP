@@ -1,0 +1,151 @@
+name: AIOps Sentinel CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master", "develop" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-quality-security:
+    name: Code Quality & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Security Vulnerability Scan (Python)
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit
+          pip-audit -r backend/requirements.txt || echo "::warning::Audit completed with advisories."
+
+      - name: Security Vulnerability Scan (Node.js)
+        run: |
+          cd aiops-sentinel
+          npm audit --audit-level=high || echo "::warning::NPM audit completed with warnings."
+
+  test-backend:
+    name: Backend Tests & Coverage Gate
+    runs-on: ubuntu-latest
+    needs: [code-quality-security]
+    env:
+      JWT_SECRET: ci-test-jwt-secret-minimum-32-characters-long
+      ADMIN_EMAIL: admin@example.test
+      ADMIN_PASSWORD: ci-test-password-must-be-at-least-12-chars
+      AGENT_API_TOKEN: ci-test-agent-token-secure
+      GITHUB_WEBHOOK_SECRET: ci-test-webhook-secret
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: 'pip'
+
+      - name: Install Backend & Test Dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements-test.txt
+          python -m prisma generate
+
+      - name: Run Backend Pytest Suite with Coverage
+        run: |
+          cd backend
+          coverage erase
+          coverage run -m pytest tests/
+          coverage report --show-missing --fail-under=95
+          coverage xml -o coverage.xml
+          coverage html -d htmlcov
+
+      - name: Upload Backend Coverage Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: |
+            backend/coverage.xml
+            backend/htmlcov/
+
+  test-frontend:
+    name: Frontend Unit & Playwright E2E Tests
+    runs-on: ubuntu-latest
+    needs: [code-quality-security]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+          cache-dependency-path: aiops-sentinel/package-lock.json
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd aiops-sentinel
+          npm ci
+
+      - name: Run Vitest Unit & Component Tests
+        run: |
+          cd aiops-sentinel
+          npm run test:ui
+
+      - name: Install Playwright Browsers (Chromium)
+        run: |
+          cd aiops-sentinel
+          npx playwright install --with-deps chromium
+
+      - name: Run Playwright End-to-End Suite
+        run: |
+          cd aiops-sentinel
+          npm run test:e2e
+
+      - name: Upload Playwright Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-e2e-report
+          path: aiops-sentinel/playwright-report/
+
+  docker-build:
+    name: Docker Container Image Validation
+    runs-on: ubuntu-latest
+    needs: [test-backend, test-frontend]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: actions/setup-buildx-action@v3
+
+      - name: Build Backend Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: false
+          tags: aiops-backend:latest
+
+      - name: Build Frontend Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./aiops-sentinel
+          push: false
+          tags: aiops-frontend:latest

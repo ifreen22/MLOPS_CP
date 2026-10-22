@@ -1,0 +1,168 @@
+# ==============================================================================
+# AIOps Sentinel - Enterprise .gitignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Environment variables and secrets (Never commit!)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+aiops-sentinel/.env
+aiops-sentinel/.env.*
+!aiops-sentinel/.env.example
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+
+# ------------------------------------------------------------------------------
+# Python & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+venv*/
+.venv/
+.venv*/
+.test-venv/
+env/
+env*/
+ENV/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# Node.js & Frontend
+# ------------------------------------------------------------------------------
+node_modules/
+aiops-sentinel/node_modules/
+MLOPS_FRONTEND/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Production build outputs
+aiops-sentinel/dist/
+aiops-sentinel/dist-ssr/
+MLOPS_FRONTEND/dist/
+dist/
+
+# ------------------------------------------------------------------------------
+# Testing, Coverage & Quality Gates
+# ------------------------------------------------------------------------------
+.cache
+.pytest_cache/
+backend/.pytest_cache/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+backend/coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+htmlcov/
+backend/htmlcov/
+.tox/
+.nox/
+coverage/
+
+# Playwright & Browser artifacts
+aiops-sentinel/playwright-report/
+aiops-sentinel/test-results/
+playwright-report/
+test-results/
+
+# ------------------------------------------------------------------------------
+# Machine Learning Artifacts & Runs
+# ------------------------------------------------------------------------------
+mlruns/
+backend/mlruns/
+.mlflow/
+backend/.mlflow/
+*.h5
+*.pkl
+*.pickle
+checkpoints/
+models/checkpoints/
+
+# ------------------------------------------------------------------------------
+# Logs & Process Outputs
+# ------------------------------------------------------------------------------
+logs/
+*.log
+windows-agent-runtime.log
+windows-agent-runtime.err.log
+compose-up.log
+pipeline_trace.log
+
+# ------------------------------------------------------------------------------
+# Database & State files
+# ------------------------------------------------------------------------------
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+postgres_data/
+
+# ------------------------------------------------------------------------------
+# IDE & Editor Configurations
+# ------------------------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------------------------
+# OS-specific files
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+[Dd]esktop.ini
+
+# Scratch scripts & temporary notes
+scratch/
+tmp/
+temp/

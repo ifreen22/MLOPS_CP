@@ -1,0 +1,35 @@
+project: AIOps Sentinel
+module: Alert Clustering Engine
+version: "1.0.0"
+
+environment:
+  python_version: "3.13.5 (Anaconda)"
+  os: "Windows 11 (10.0.26200-SP0) AMD64"
+  device: "CPU"
+
+dataset:
+  name: "LogHub HDFS Benchmark Subset"
+  source: "https://raw.githubusercontent.com/logpai/loghub/master/HDFS/HDFS_2k.log"
+  samples: 2000
+  train_test_split: 0.3
+  seed: 42
+
+embeddings:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  dimensions: 384
+  batch_size: 32
+
+clustering:
+  algorithm: "HDBSCAN"
+  hyperparameters:
+    min_cluster_size: 5
+    prediction_data: true
+    metric: "euclidean"
+    alpha: 1.0
+
+evaluation:
+  random_seeds:
+    train_test_split: 42
+    umap: 42
+    tsne: 42
+    kmeans: 42

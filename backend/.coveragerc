@@ -1,0 +1,19 @@
+[run]
+source = app
+branch = True
+omit =
+    app/data_seed.py
+    app/seed_full_project.py
+    app/ml_services/alert_clustering/research_validation.py
+
+[report]
+show_missing = True
+precision = 2
+# A result of exactly 95.00% is not sufficient for the production gate.
+fail_under = 95.01
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass

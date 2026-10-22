@@ -1,0 +1,16 @@
+Feature,Importance
+files_changed,0.5180000000000001
+network_latency,0.2704000000000001
+service_dependency_count,0.21159999999999982
+developer_experience,0.0
+deployment_time,0.0
+deployment_size,0.0
+code_churn,0.0
+rollback_count,0.0
+day_of_week,0.0
+cpu_increase,0.0
+previous_incident_count,0.0
+memory_increase,0.0
+disk_io,0.0
+anomaly_score,0.0
+root_cause_score,0.0

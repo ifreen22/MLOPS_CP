@@ -1,0 +1,1 @@
+{"type": "isolation_forest", "features": ["value", "sin_hour", "cos_hour", "rolling_mean_5", "rolling_std_5", "lag_1"]}

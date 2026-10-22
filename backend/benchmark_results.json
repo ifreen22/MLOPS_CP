@@ -1,0 +1,72 @@
+{
+    "HDBSCAN": {
+        "silhouette": 0.9432308673858643,
+        "davies_bouldin": 0.6948568776291786,
+        "calinski_harabasz": 61053.030172695384,
+        "n_clusters": 29,
+        "noise_pct": 7.857142857142857,
+        "ari": 0.703781139457724,
+        "v_measure": 0.8141035834024266,
+        "homogeneity": 0.9810704611803771,
+        "completeness": 0.6957029627119191,
+        "purity": 0.9914285714285714,
+        "train_time": 0.9879980087280273,
+        "infer_time": 0.13801002502441406
+    },
+    "KMeans": {
+        "silhouette": 0.8673709630966187,
+        "davies_bouldin": 0.6424329606989432,
+        "calinski_harabasz": 8850.820857454113,
+        "n_clusters": 11,
+        "noise_pct": 0.0,
+        "ari": 0.8753297222127924,
+        "v_measure": 0.9328712340131665,
+        "homogeneity": 0.9958266886972996,
+        "completeness": 0.8774024739229338,
+        "purity": 0.9985714285714286,
+        "train_time": 0.05983614921569824,
+        "infer_time": 0.003642559051513672
+    },
+    "DBSCAN": {
+        "silhouette": 0.9284559488296509,
+        "davies_bouldin": 0.18299417093254383,
+        "calinski_harabasz": 10563.128313841358,
+        "n_clusters": 9,
+        "noise_pct": 0.5,
+        "ari": 0.8596125595656906,
+        "v_measure": 0.9217319131550984,
+        "homogeneity": 0.9483100089054922,
+        "completeness": 0.8966029994602522,
+        "purity": 0.9614285714285714,
+        "train_time": 0.08580255508422852,
+        "infer_time": 8.249282836914062e-05
+    },
+    "Agglomerative": {
+        "silhouette": 0.9505372643470764,
+        "davies_bouldin": 0.48581857400875084,
+        "calinski_harabasz": 10403.345209084793,
+        "n_clusters": 11,
+        "noise_pct": 0.0,
+        "ari": 0.9022334155755053,
+        "v_measure": 0.946443307146385,
+        "homogeneity": 0.9958266886972996,
+        "completeness": 0.9017263911086167,
+        "purity": 0.9985714285714286,
+        "train_time": 0.6367392539978027,
+        "infer_time": 9.751319885253906e-05
+    },
+    "Spectral": {
+        "silhouette": -0.12727388739585876,
+        "davies_bouldin": 1.0131839096212352,
+        "calinski_harabasz": 50.054536119432,
+        "n_clusters": 11,
+        "noise_pct": 0.0,
+        "ari": 0.12675698554580922,
+        "v_measure": 0.45772697165518017,
+        "homogeneity": 0.36026675288352544,
+        "completeness": 0.6274722595566268,
+        "purity": 0.43357142857142855,
+        "train_time": 0.24314403533935547,
+        "infer_time": 6.842613220214844e-05
+    }
+}

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-background":"#dfe2ef","inverse-on-surface":"#2c303a","on-tertiary-fixed":"#2a1700","surface-container-high":"#262a34","on-error-container":"#ffdad6","surface-dim":"#0f131c","secondary":"#4edea3","secondary-container":"#00a572","surface-container-highest":"#31353f","on-surface-variant":"#bbc9cd","on-secondary-container":"#00311f","secondary-fixed-dim":"#4edea3","inverse-primary":"#006877","tertiary":"#ffd6a7","tertiary-fixed-dim":"#ffb95f","on-primary-fixed-variant":"#004e5a","surface-bright":"#353943","surface":"#0f131c","surface-container-low":"#181b25","on-tertiary":"#472a00","on-error":"#690005","error":"#ffb4ab","secondary-fixed":"#6ffbbe","on-primary":"#00363e","on-surface":"#dfe2ef","surface-container":"#1c1f29","primary-container":"#22d3ee","primary":"#8aebff","background":"#0f131c","tertiary-container":"#ffb147","primary-fixed":"#a2eeff","surface-tint":"#2fd9f4","inverse-surface":"#dfe2ef","on-secondary":"#003824","on-primary-fixed":"#001f25","primary-fixed-dim":"#2fd9f4","on-tertiary-fixed-variant":"#653e00","tertiary-fixed":"#ffddb8","surface-container-lowest":"#0a0e17","error-container":"#93000a","outline-variant":"#3c494c","surface-variant":"#31353f","on-secondary-fixed":"#002113","on-tertiary-container":"#704500","outline":"#859397","on-primary-container":"#005763","on-secondary-fixed-variant":"#005236"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"gutter":"1rem","space-md":"1rem","margin":"1.5rem","space-lg":"1.5rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2rem"},"fontFamily":{"headline-md":["Inter"],"body-md":["Inter"],"label-code-md":["JetBrains Mono"],"label-code-lg":["JetBrains Mono"],"headline-sm":["Inter"],"headline-lg":["Inter"],"body-sm":["Inter"],"body-lg":["Inter"],"label-code-sm":["JetBrains Mono"],"metric-display":["JetBrains Mono"]},"fontSize":{"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.015em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"label-code-md":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}],"label-code-lg":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"body-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"label-code-sm":["0.6875rem",{"lineHeight":"0.875rem","fontWeight":"400"}],"metric-display":["1.75rem",{"lineHeight":"2rem","letterSpacing":"-0.03em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-low border-r border-outline-variant z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest"><div class="flex items-center gap-space-sm min-w-0"><img alt="AIOps Sentinel Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XDGmcy3WtIcLAx1AD5IllaWrF7gwSsES262mLaLbgGeLbq09tI83Duka1mCCUws63xA0bg-B19npezPq4ykdy2n8cyngnPmINQ0oCA-KXlV8ZAnCoF8wgGXNqjfvNSAvo8BZTinR-g5528hpsA7vGsfpb4BOpGWMEwL-nxXg-lK4tDAnzVTxVOJCchzWjmtoM7jHibFLqsgW11PxyxBT1Ee-mvcGcPMVTHZDSgErTrsRtXMFFgciGa"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-on-surface font-semibold tracking-wider uppercase truncate text-[0.8125rem] leading-tight">Sentinel</span><span class="font-label-code-sm text-outline tracking-wider uppercase text-[0.625rem]">AIOps Core</span></div></div><div class="flex items-center gap-1.5 px-space-xs py-0.5 rounded-DEFAULT bg-secondary/10 border border-secondary/20"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="font-label-code-sm text-secondary uppercase text-[0.5625rem] tracking-wider font-bold">LIVE</span></div></div><div class="px-space-md py-space-xs border-b border-outline-variant/40 bg-surface-container-low/50"><span class="font-label-code-sm text-outline uppercase tracking-wider text-[0.625rem]">Mission Topology</span></div><nav class="flex flex-col py-space-xs px-space-xs gap-0.5" data-active-classes="bg-surface-container-high text-primary border-l-2 border-primary-container font-medium"><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="mission-control" href="#"><span class="font-body-md text-[0.8125rem]">Mission Control</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="situation-room" href="#"><span class="font-body-md text-[0.8125rem]">Situation Room</span><span class="px-1.5 py-0.5 rounded-DEFAULT bg-error-container text-on-error-container font-label-code-sm text-[0.625rem] font-bold border border-error/30">1 Sev1</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="alert-clustering" href="#"><span class="font-body-md text-[0.8125rem]">Alert Clustering</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="graph-explorer" href="#"><span class="font-body-md text-[0.8125rem]">Graph Explorer</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="change-intel" href="#"><span class="font-body-md text-[0.8125rem]">Change Intel</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="slo-dashboard" href="#"><span class="font-body-md text-[0.8125rem]">SLO Dashboard</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="remediation-playbooks" href="#"><span class="font-body-md text-[0.8125rem]">Remediation Playbooks</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="settings-policies" href="#"><span class="font-body-md text-[0.8125rem]">Settings &amp; Policies</span></a></nav></div><div class="p-space-sm border-t border-outline-variant bg-surface-container-lowest/80 flex flex-col gap-space-xs"><div class="p-space-xs rounded-DEFAULT bg-surface-container border border-outline-variant/60 flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code-sm text-outline text-[0.625rem] uppercase">Target Cluster</span><span class="font-label-code-sm text-secondary text-[0.6875rem] font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>18ms</span></div><div class="font-label-code-md text-on-surface text-[0.6875rem] truncate">prod-us-east-k8s</div></div><div class="pt-space-xs border-t border-outline-variant/40 flex items-center justify-between"><div class="flex items-center gap-space-xs min-w-0"><div class="w-7 h-7 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-code-sm font-bold text-[0.6875rem] shrink-0">SC</div><div class="flex flex-col min-w-0"><span class="font-body-sm text-on-surface text-[0.6875rem] font-medium truncate">sarah.chen</span><span class="font-label-code-sm text-outline text-[0.5625rem] truncate">Shift → 08:00 UTC</span></div></div><div class="w-2 h-2 rounded-full bg-secondary" title="On-Call Active"></div></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-container-low border-b border-outline-variant z-40 px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-code-md text-on-surface-variant text-[0.75rem]"><span class="text-outline">Cluster:</span><span class="text-primary font-semibold">prod-core-01</span><span class="text-outline-variant">/</span><span class="text-outline">Region:</span><span class="text-on-surface">us-east-1</span></div></div><div class="w-[380px] relative"><div class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none"><span class="material-symbols-outlined text-outline text-[16px]">search</span></div><input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT pl-8 pr-12 py-1.5 font-label-code-sm text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container text-[0.6875rem]" placeholder="Search situations, services, traces, pods..." readonly="" type="text"/><div class="absolute inset-y-0 right-0 pr-space-xs flex items-center pointer-events-none"><kbd class="px-1.5 py-0.5 rounded-DEFAULT bg-surface-container-high border border-outline-variant font-label-code-sm text-outline text-[0.5625rem]">⌘K</kbd></div></div><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded-DEFAULT bg-surface-container border border-outline-variant"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-code-sm text-outline text-[0.6875rem]">Telemetry:</span><span class="font-label-code-sm text-on-surface font-semibold text-[0.6875rem]">2.4M evt/s</span></div><div class="flex items-center gap-1 px-space-xs py-1 rounded-DEFAULT bg-surface-container border border-outline-variant font-label-code-sm text-on-surface text-[0.6875rem]"><span class="material-symbols-outlined text-[16px] text-outline">schedule</span><span>Last 15m</span></div><button class="relative p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-DEFAULT transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-low"></span></button><div class="flex items-center gap-space-xs pl-space-xs border-l border-outline-variant"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface-container-lowest min-h-screen text-on-surface font-body-md"><div class="flex flex-col w-full">
+<!-- PAGE HEADER & STATUS STRIP -->
+<div class="px-space-lg py-space-md border-b border-outline-variant bg-surface-container-low">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-md text-on-surface font-semibold tracking-tight">Settings &amp; Policies</h1>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary font-label-code-sm border border-secondary/30 font-bold uppercase tracking-wider text-[0.625rem]">GOVERNANCE ACTIVE</span>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-surface-container-high text-primary font-label-code-sm border border-primary/30 text-[0.625rem]">OPA ENGINE v0.58</span>
+</div>
+<p class="font-body-sm text-on-surface-variant max-w-3xl">
+          Configure automated remediation guardrails, service criticality tiers, alert routing webhooks, and team access controls.
+        </p>
+</div>
+<div class="flex items-center gap-space-md bg-surface-container-lowest px-space-md py-2 rounded-DEFAULT border border-outline-variant/70 shrink-0">
+<div class="flex flex-col">
+<span class="font-label-code-sm text-outline text-[0.625rem] uppercase">Policy State</span>
+<span class="font-label-code-sm text-on-surface text-[0.6875rem] flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            Synced: <span class="text-primary font-medium">main@9b4e12</span>
+</span>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-code-sm text-outline text-[0.625rem] uppercase">Cluster Bound</span>
+<span class="font-label-code-sm text-on-surface-variant text-[0.6875rem]">prod-us-east-k8s</span>
+</div>
+</div>
+</div>
+</div>
+<!-- NAVIGATION TABS -->
+<div class="px-space-lg border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between overflow-x-auto">
+<nav class="flex space-x-1" id="tab-group">
+<button class="tab-btn active px-space-md py-3 font-label-code-md text-[0.75rem] flex items-center gap-2 border-b-2 border-primary-container text-primary bg-surface-container-high/60 transition-all font-semibold" id="tab-btn-policy-editor" onclick="switchTab('policy-editor')">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+        Policy Editor (Rego)
+      </button>
+<button class="tab-btn px-space-md py-3 font-label-code-md text-[0.75rem] flex items-center gap-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="tab-btn-service-tiers" onclick="switchTab('service-tiers')">
+<span class="material-symbols-outlined text-[16px]">layers</span>
+        Service Tiers
+      </button>
+<button class="tab-btn px-space-md py-3 font-label-code-md text-[0.75rem] flex items-center gap-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="tab-btn-notification-routing" onclick="switchTab('notification-routing')">
+<span class="material-symbols-outlined text-[16px]">alt_route</span>
+        Notification Routing
+      </button>
+<button class="tab-btn px-space-md py-3 font-label-code-md text-[0.75rem] flex items-center gap-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" id="tab-btn-user-management" onclick="switchTab('user-management')">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+        User Management &amp; SSO
+      </button>
+</nav>
+<div class="hidden sm:flex items-center gap-2 font-label-code-sm text-outline text-[0.6875rem]">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span>Live Audit Lock: Active</span>
+</div>
+</div>
+<!-- TAB PANES CONTAINER -->
+<div class="p-space-lg">
+<!-- ============================================== -->
+<!-- TAB 1: POLICY EDITOR (REGO / OPA GUARDRAILS) -->
+<!-- ============================================== -->
+<div class="tab-pane flex flex-col gap-space-md" id="tab-pane-policy-editor">
+<!-- Secondary Subheader & File Switcher -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-DEFAULT border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">folder_open</span>
+<select class="bg-surface-container-lowest text-primary font-label-code-sm text-[0.75rem] border border-outline-variant rounded-DEFAULT px-2.5 py-1 focus:outline-none focus:border-primary-container" id="policy-file-select">
+<option selected="">guardrails/remediation_safety.rego</option>
+<option>authz/sre_roles.rego</option>
+<option>blast_radius/node_limits.rego</option>
+<option>canary/rollback_thresholds.rego</option>
+</select>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary border border-secondary/30 font-label-code-sm text-[0.625rem] flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> Syntax Valid
+          </span>
+<span class="text-outline font-label-code-sm text-[0.6875rem] hidden md:inline">· UTF-8 · 24 lines · Compiled in 1.4ms</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2 py-1 bg-surface-container text-on-surface-variant hover:text-on-surface text-[0.6875rem] font-label-code-sm rounded-DEFAULT border border-outline-variant flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[14px]">history</span> Revert to Git HEAD
+          </button>
+<button class="px-2 py-1 bg-surface-container text-on-surface-variant hover:text-on-surface text-[0.6875rem] font-label-code-sm rounded-DEFAULT border border-outline-variant flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[14px]">fact_check</span> Audit Trail (14 revs)
+          </button>
+</div>
+</div>
+<!-- Code Editor Canvas (Full IDE Look) -->
+<div class="rounded-DEFAULT border border-outline-variant bg-surface-container-lowest overflow-hidden flex flex-col">
+<!-- Editor Titlebar -->
+<div class="px-space-md py-1.5 bg-surface-container-low border-b border-outline-variant flex items-center justify-between text-outline font-label-code-sm text-[0.6875rem]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary/70"></span>
+<span class="ml-2 text-on-surface font-medium">remediation_safety.rego</span>
+<span class="text-outline-variant">|</span>
+<span class="text-outline">Open Policy Agent v0.58.0 Compliant</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Spaces: 4</span>
+<span>Tab: UTF-8</span>
+</div>
+</div>
+<!-- Code Workspace with Line Numbers -->
+<div class="flex font-label-code-md text-[0.8125rem] leading-6 select-text overflow-x-auto p-2 bg-[#080c14]">
+<!-- Line numbers -->
+<div class="flex flex-col text-right text-outline/40 select-none pr-4 pl-2 border-r border-outline-variant/30 shrink-0 font-label-code-sm text-[0.75rem]">
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+<span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+<span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+<span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+<span>21</span><span>22</span><span>23</span><span>24</span>
+</div>
+<!-- Code content with syntax tokens -->
+<pre class="pl-4 text-on-surface overflow-x-auto font-label-code-md text-[0.8125rem] leading-6"><code class="language-rego"><span class="text-[#22D3EE] font-semibold">package</span> sentinel.guardrails.remediation
+
+<span class="text-[#22D3EE] font-semibold">import</span> future.keywords.in
+
+<span class="text-secondary font-medium">default</span> allow = <span class="text-error font-medium">false</span>
+
+<span class="text-outline/80 italic"># Rule 1: Human-in-the-loop enforced on Tier-0 revenue critical services</span>
+<span class="text-secondary font-medium">allow</span> <span class="text-primary-fixed">if</span> {
+    input.action.risk == <span class="text-tertiary">"low"</span>
+    input.service.tier != <span class="text-tertiary">"tier-0"</span>
+}
+
+<span class="text-outline/80 italic"># Rule 2: Deny high-risk action if active breach blast radius &gt; 15 pods</span>
+<span class="text-error font-medium">deny</span>[msg] <span class="text-primary-fixed">if</span> {
+    input.action.type == <span class="text-tertiary">"circuit_break"</span>
+    input.blast_radius.pod_count &gt; <span class="text-primary-container">15</span>
+    msg := sprintf(<span class="text-tertiary">"Blast radius %v exceeds maximum limit (15)"</span>, [input.blast_radius.pod_count])
+}
+
+<span class="text-outline/80 italic"># Rule 3: Auto-mitigate memory leaks only on canary pods</span>
+<span class="text-secondary font-medium">allow</span> <span class="text-primary-fixed">if</span> {
+    input.action.type == <span class="text-tertiary">"rollback"</span>
+    input.target.slice == <span class="text-tertiary">"canary"</span>
+    input.telemetry.confidence &gt;= <span class="text-primary-container">0.90</span>
+}</code></pre>
+</div>
+<!-- Action Control Bar -->
+<div class="px-space-md py-space-sm bg-surface-container-low border-t border-outline-variant flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<button class="px-3 py-1.5 rounded-DEFAULT bg-primary-container text-on-primary-container font-label-code-md font-bold text-[0.75rem] flex items-center gap-1.5 hover:bg-[#06B6D4] transition-colors shadow-sm" id="save-policy-btn" onclick="simulateSavePolicy()">
+<span class="material-symbols-outlined text-[16px]">check</span>
+              Save &amp; Validate Policy
+            </button>
+<button class="px-3 py-1.5 rounded-DEFAULT bg-transparent text-on-surface font-label-code-md text-[0.75rem] border border-outline-variant flex items-center gap-1.5 hover:bg-surface-container hover:border-outline transition-colors" onclick="simulateDryRun()">
+<span class="material-symbols-outlined text-[16px]">science</span>
+              Test Policy Dry-Run
+            </button>
+</div>
+<div class="flex items-center gap-space-sm text-outline font-label-code-sm text-[0.6875rem]">
+<span>Branch: <span class="text-on-surface">production</span></span>
+<span class="text-outline-variant">•</span>
+<span class="text-secondary" id="save-status-msg">All policies compiled &amp; active in envoy sidecars</span>
+</div>
+</div>
+</div>
+<!-- Test Output Drawer / Monospace Simulation Terminal -->
+<div class="rounded-DEFAULT border border-outline-variant bg-[#05080f] overflow-hidden">
+<div class="px-space-md py-1.5 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">terminal</span>
+<span class="font-label-code-sm text-on-surface font-semibold text-[0.6875rem] uppercase tracking-wider">Evaluation Console Output</span>
+</div>
+<span class="font-label-code-sm text-outline text-[0.625rem]">Target Payload: Event SIT-4471 (Kafka OOM)</span>
+</div>
+<div class="p-space-md font-label-code-sm text-[0.6875rem] leading-5 space-y-1">
+<div class="text-outline">&gt; rego_test --bundle=/etc/sentinel/guardrails --input=/fixtures/situation_sit_4471.json</div>
+<div class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            [OPA EVALUATION]: PASS (2 rules matched, 0 deny directives triggered. Execution time: 1.4ms).
+          </div>
+<div class="text-on-surface-variant pl-4">
+            - rule_1: [SKIPPED] service.tier == "tier-0"<br/>
+            - rule_2: [PASS] pod_count: 6 &lt;= 15<br/>
+            - rule_3: [EVAL_TRUE] input.action.type == "rollback" &amp; confidence: 0.94 &gt;= 0.90
+          </div>
+<div class="text-primary pl-4 font-semibold">&gt;&gt; Guardrail Decision: AUTONOMOUS_EXECUTION_AUTHORIZED</div>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- TAB 2: SERVICE TIERS -->
+<!-- ============================================== -->
+<div class="tab-pane hidden flex-col gap-space-md" id="tab-pane-service-tiers">
+<!-- Tier Definitions Banner -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col gap-1 border-l-2 border-l-error">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-DEFAULT bg-error/15 text-error font-label-code-sm font-bold text-[0.625rem] border border-error/30">Tier-0 Critical</span>
+<span class="material-symbols-outlined text-error text-[16px]">lock</span>
+</div>
+<span class="font-headline-sm text-[0.875rem] text-on-surface font-semibold mt-1">Revenue-Critical Paths</span>
+<p class="font-body-sm text-outline text-[0.6875rem]">Strict human approval mandatory for all automated state alterations. Zero headless executions allowed.</p>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col gap-1 border-l-2 border-l-tertiary-container">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-DEFAULT bg-tertiary-container/15 text-tertiary-container font-label-code-sm font-bold text-[0.625rem] border border-tertiary-container/30">Tier-1 Important</span>
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">verified_user</span>
+</div>
+<span class="font-headline-sm text-[0.875rem] text-on-surface font-semibold mt-1">High-Impact Services</span>
+<p class="font-body-sm text-outline text-[0.6875rem]">Auto-execute verified low-risk playbooks (restart, scale pod). Escalate medium &amp; high risk actions to on-call commander.</p>
+</div>
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col gap-1 border-l-2 border-l-secondary">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary font-label-code-sm font-bold text-[0.625rem] border border-secondary/30">Tier-2 Standard</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">bolt</span>
+</div>
+<span class="font-headline-sm text-[0.875rem] text-on-surface font-semibold mt-1">Worker &amp; Auxiliary Tier</span>
+<p class="font-body-sm text-outline text-[0.6875rem]">Full autonomic self-healing. Low and medium risk remediation actions executed automatically with telemetry rollback guards.</p>
+</div>
+</div>
+<!-- Service Tiers Interactive Table Card -->
+<div class="rounded-DEFAULT border border-outline-variant bg-surface-container-low overflow-hidden flex flex-col">
+<!-- Table Filter / Action Bar -->
+<div class="p-space-sm bg-surface-container-lowest border-b border-outline-variant flex flex-wrap items-center justify-between gap-space-sm">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-outline text-[16px]">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-DEFAULT pl-8 pr-3 py-1 font-label-code-sm text-[0.6875rem] text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container" id="service-search-input" onkeyup="filterServiceTable()" placeholder="Filter microservices or namespaces..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-code-sm text-outline text-[0.6875rem]">Showing 6 governed services</span>
+<button class="px-3 py-1 bg-primary-container text-on-primary-container font-label-code-sm font-bold text-[0.6875rem] rounded-DEFAULT hover:bg-[#06B6D4] transition-colors flex items-center gap-1" onclick="saveTierChangesToast()">
+<span class="material-symbols-outlined text-[14px]">save</span> Save Tier Changes
+            </button>
+</div>
+</div>
+<!-- Table Viewport -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="service-tier-table">
+<thead>
+<tr class="bg-[#0e1420] text-outline font-label-code-sm text-[0.6875rem] uppercase tracking-wider border-b border-outline-variant">
+<th class="py-2.5 px-space-md">Service Name</th>
+<th class="py-2.5 px-space-sm">Namespace</th>
+<th class="py-2.5 px-space-md">Assigned Criticality Tier</th>
+<th class="py-2.5 px-space-sm">Risk Exemption</th>
+<th class="py-2.5 px-space-sm">Action Policy</th>
+<th class="py-2.5 px-space-sm">Assigned By</th>
+<th class="py-2.5 px-space-md text-right">Last Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 font-label-code-sm text-[0.75rem]">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  checkout-service
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">core-orders</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-error/40 text-error font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-error focus:outline-none">
+<option selected="">Tier-0 (Revenue-critical)</option>
+<option>Tier-1 (Important)</option>
+<option>Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-outline">None</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-error/10 text-error border border-error/20 text-[0.625rem] font-medium">Strict Manual Approval</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">sarah.chen</td>
+<td class="py-2 px-space-md text-right text-outline">2d ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors bg-surface-container-lowest/40">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  payment-gw
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">payments</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-error/40 text-error font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-error focus:outline-none">
+<option selected="">Tier-0 (Revenue-critical)</option>
+<option>Tier-1 (Important)</option>
+<option>Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-outline">None</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-error/10 text-error border border-error/20 text-[0.625rem] font-medium">Strict Manual Approval</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">alex.r</td>
+<td class="py-2 px-space-md text-right text-outline">5d ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  cart-service
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">core-orders</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-tertiary-container/40 text-tertiary-container font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-tertiary-container focus:outline-none">
+<option>Tier-0 (Revenue-critical)</option>
+<option selected="">Tier-1 (Important)</option>
+<option>Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-tertiary">Low-Risk Auto</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-tertiary-container/10 text-tertiary-container border border-tertiary-container/20 text-[0.625rem] font-medium">Human for Med/High</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">deploy-bot</td>
+<td class="py-2 px-space-md text-right text-outline">1w ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors bg-surface-container-lowest/40">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  auth-service
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">core-identity</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-error/40 text-error font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-error focus:outline-none">
+<option selected="">Tier-0 (Revenue-critical)</option>
+<option>Tier-1 (Important)</option>
+<option>Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-outline">None</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-error/10 text-error border border-error/20 text-[0.625rem] font-medium">Strict Manual Approval</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">sec-ops</td>
+<td class="py-2 px-space-md text-right text-outline">2w ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  search-indexer
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">search-domain</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-secondary/40 text-secondary font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-secondary focus:outline-none">
+<option>Tier-0 (Revenue-critical)</option>
+<option>Tier-1 (Important)</option>
+<option selected="">Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-secondary">Low+Med Auto</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem] font-medium">Full Autopilot</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">sarah.chen</td>
+<td class="py-2 px-space-md text-right text-outline">3w ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors bg-surface-container-lowest/40">
+<td class="py-2 px-space-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline">dns</span>
+                  notification-svc
+                </td>
+<td class="py-2 px-space-sm text-on-surface-variant">async-workers</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-secondary/40 text-secondary font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:border-secondary focus:outline-none">
+<option>Tier-0 (Revenue-critical)</option>
+<option>Tier-1 (Important)</option>
+<option selected="">Tier-2 (Standard)</option>
+</select>
+</td>
+<td class="py-2 px-space-sm text-secondary">Low+Med Auto</td>
+<td class="py-2 px-space-sm text-on-surface"><span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem] font-medium">Full Autopilot</span></td>
+<td class="py-2 px-space-sm text-on-surface-variant">platform-sre</td>
+<td class="py-2 px-space-md text-right text-outline">1mo ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- TAB 3: NOTIFICATION ROUTING -->
+<!-- ============================================== -->
+<div class="tab-pane hidden flex-col gap-space-md" id="tab-pane-notification-routing">
+<!-- 4 Configuration Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Card A: Slack Webhook -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-surface-container flex items-center justify-center text-primary font-bold">#</div>
+<div>
+<h2 class="font-headline-sm text-[0.875rem] text-on-surface font-semibold">Slack Webhook Dispatch</h2>
+<span class="font-label-code-sm text-outline text-[0.625rem]">Incident bridge synchronization</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary border border-secondary/30 font-label-code-sm text-[0.625rem] flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Connected (ping: 42ms)
+              </span>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Webhook URL Target</label>
+<div class="flex items-center gap-2">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-on-surface focus:outline-none focus:border-primary-container" readonly="" type="password" value="https://hooks.slack.com/services/T00/B00/XXXXXXXXXX"/>
+<button class="px-2 py-1.5 bg-surface-container text-on-surface text-[0.6875rem] font-label-code-sm border border-outline-variant rounded-DEFAULT hover:bg-surface-container-high transition-colors">Show</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Target Severity Triage Channel</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-on-surface focus:outline-none focus:border-primary-container" type="text" value="#sre-triage-sev1"/>
+</div>
+</div>
+<div class="pt-space-sm mt-4 border-t border-outline-variant/60 flex items-center justify-between">
+<span class="font-label-code-sm text-outline text-[0.625rem]">Message format: BlockKit v2</span>
+<button class="px-2.5 py-1 bg-transparent text-primary border border-primary/30 rounded-DEFAULT font-label-code-sm text-[0.6875rem] hover:bg-primary/10 transition-colors">Test Connection</button>
+</div>
+</div>
+<!-- Card B: PagerDuty Integration -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-DEFAULT bg-surface-container flex items-center justify-center text-error font-bold">PD</div>
+<div>
+<h2 class="font-headline-sm text-[0.875rem] text-on-surface font-semibold">PagerDuty Integration</h2>
+<span class="font-label-code-sm text-outline text-[0.625rem]">Events API v2 High-Urgency</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary border border-secondary/30 font-label-code-sm text-[0.625rem] flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Operational
+              </span>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Integration Routing Key</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-primary focus:outline-none focus:border-primary-container font-mono" readonly="" type="text" value="pd-aiops-prod-key-884a-912f"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Escalation Policy</label>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 text-on-surface font-label-code-sm text-[0.6875rem] flex items-center justify-between">
+<span>Level-1 Primary SRE On-Call</span>
+<span class="text-secondary font-medium">(Sarah Chen currently on shift)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-4 border-t border-outline-variant/60 flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container border-outline-variant text-primary focus:ring-0" type="checkbox"/>
+<span class="font-label-code-sm text-on-surface text-[0.6875rem]">Service Directory auto-sync</span>
+</label>
+<button class="px-2.5 py-1 bg-transparent text-on-surface-variant border border-outline-variant rounded-DEFAULT font-label-code-sm text-[0.6875rem] hover:bg-surface-container transition-colors">Sync Now</button>
+</div>
+</div>
+<!-- Card C: Email Alerts & SMTP -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">mail</span>
+<div>
+<h2 class="font-headline-sm text-[0.875rem] text-on-surface font-semibold">Email Alerts &amp; SMTP Relay</h2>
+<span class="font-label-code-sm text-outline text-[0.625rem]">RFC 2822 Digest &amp; Incident Records</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Distribution Mailing Lists (Comma-separated)</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-on-surface focus:outline-none focus:border-primary-container" rows="2">sre-leads@sentinel-aiops.internal, noc-alerts@sentinel-aiops.internal</textarea>
+</div>
+<div class="flex items-center gap-2 text-outline font-label-code-sm text-[0.625rem]">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>TLS 1.3 enforced via internal relay: smtp.prod.sentinel.internal:587</span>
+</div>
+</div>
+<div class="pt-space-sm mt-4 border-t border-outline-variant/60 flex items-center justify-between">
+<span class="font-label-code-sm text-outline text-[0.625rem]">Last digest: 14 mins ago</span>
+<button class="px-2.5 py-1 bg-transparent text-on-surface-variant border border-outline-variant rounded-DEFAULT font-label-code-sm text-[0.6875rem] hover:bg-surface-container transition-colors">Send Test Digest</button>
+</div>
+</div>
+<!-- Card D: Global Severity Threshold & Suppression -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<div>
+<h2 class="font-headline-sm text-[0.875rem] text-on-surface font-semibold">Global Threshold &amp; Noise Suppression</h2>
+<span class="font-label-code-sm text-outline text-[0.625rem]">Deduplication &amp; fatigue prevention</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-primary/10 text-primary border border-primary/20 font-label-code-sm text-[0.625rem]">98.2% Deduped</span>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Severity Notification Threshold</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-on-surface focus:outline-none focus:border-primary-container">
+<option>SEV1 Critical Only</option>
+<option selected="">SEV1 &amp; SEV2 Warnings (Recommended)</option>
+<option>All Severities (SEV1-SEV4 Comprehensive)</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.625rem]">Deduplication Window</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2 py-1 font-label-code-sm text-[0.6875rem] text-on-surface" readonly="" type="text" value="120s sliding window"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.625rem]">Mute in Maintenance</label>
+<div class="flex items-center justify-between bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2 py-1">
+<span class="font-label-code-sm text-secondary text-[0.6875rem]">ENABLED</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm mt-4 border-t border-outline-variant/60 flex items-center justify-between">
+<span class="font-label-code-sm text-outline text-[0.625rem]">Suppressed alerts logged to cold telemetry bucket</span>
+<span class="font-label-code-sm text-secondary text-[0.6875rem]">Engine: Sentinel-Dedupe</span>
+</div>
+</div>
+</div>
+<!-- Save Dispatch Configuration Button -->
+<div class="p-space-sm bg-surface-container-low rounded-DEFAULT border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-code-sm text-on-surface text-[0.75rem]">All routing webhook targets pass heartbeat verifications</span>
+</div>
+<button class="px-4 py-1.5 bg-primary-container text-on-primary-container font-label-code-md font-bold text-[0.75rem] rounded-DEFAULT hover:bg-[#06B6D4] transition-colors shadow-sm" onclick="saveNotificationSettingsToast()">
+          Save Routing Configuration
+        </button>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- TAB 4: USER MANAGEMENT & SSO -->
+<!-- ============================================== -->
+<div class="tab-pane hidden flex-col gap-space-md" id="tab-pane-user-management">
+<!-- Top Action Bar & Metrics -->
+<div class="p-space-sm rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">groups</span>
+<span class="font-label-code-md text-on-surface font-semibold text-[0.8125rem]">18 Active Seats</span>
+</div>
+<span class="text-outline-variant">|</span>
+<span class="font-label-code-sm text-outline text-[0.6875rem]">4 Admins • 12 SREs • 2 Viewers</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-1.5 text-outline text-[16px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT pl-8 pr-3 py-1 font-label-code-sm text-[0.6875rem] text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container" placeholder="Search team member..." type="text"/>
+</div>
+<button class="px-2.5 py-1 bg-surface-container text-on-surface text-[0.6875rem] font-label-code-sm border border-outline-variant rounded-DEFAULT hover:bg-surface-container-high transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">download</span> Export Audit Logs
+          </button>
+<button class="px-3 py-1 bg-primary-container text-on-primary-container font-label-code-sm font-bold text-[0.6875rem] rounded-DEFAULT hover:bg-[#06B6D4] transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">person_add</span> Invite User
+          </button>
+</div>
+</div>
+<!-- Users Table -->
+<div class="rounded-DEFAULT border border-outline-variant bg-surface-container-low overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#0e1420] text-outline font-label-code-sm text-[0.6875rem] uppercase tracking-wider border-b border-outline-variant">
+<th class="py-2.5 px-space-md">User</th>
+<th class="py-2.5 px-space-sm">Work Email</th>
+<th class="py-2.5 px-space-md">Role &amp; Permissions</th>
+<th class="py-2.5 px-space-sm">MFA Status</th>
+<th class="py-2.5 px-space-sm">Last Active</th>
+<th class="py-2.5 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 font-label-code-sm text-[0.75rem]">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container font-bold text-[0.625rem] flex items-center justify-center">SC</div>
+<span class="font-medium text-on-surface">Sarah Chen</span>
+</td>
+<td class="py-2 px-space-sm text-outline">sarah.chen@sentinel.io</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-outline-variant text-primary font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:outline-none">
+<option selected="">Incident Commander (Admin)</option>
+<option>Senior SRE (Write/Execute)</option>
+<option>SRE Responder (Write/Execute)</option>
+<option>Read-Only Observer</option>
+</select>
+</td>
+<td class="py-2 px-space-sm">
+<span class="px-1.5 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem]">Enforced (FIDO2)</span>
+</td>
+<td class="py-2 px-space-sm text-secondary font-medium">Just now</td>
+<td class="py-2 px-space-md text-right">
+<button class="text-outline hover:text-error transition-colors text-[0.6875rem]">Remove</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors bg-surface-container-lowest/40">
+<td class="py-2 px-space-md flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-primary font-bold text-[0.625rem] flex items-center justify-center">AR</div>
+<span class="font-medium text-on-surface">Alex Rivera</span>
+</td>
+<td class="py-2 px-space-sm text-outline">alex.r@sentinel.io</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:outline-none">
+<option>Incident Commander (Admin)</option>
+<option selected="">Senior SRE (Write/Execute)</option>
+<option>SRE Responder (Write/Execute)</option>
+<option>Read-Only Observer</option>
+</select>
+</td>
+<td class="py-2 px-space-sm">
+<span class="px-1.5 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem]">Enforced (TOTP)</span>
+</td>
+<td class="py-2 px-space-sm text-on-surface-variant">12m ago</td>
+<td class="py-2 px-space-md text-right">
+<button class="text-outline hover:text-error transition-colors text-[0.6875rem]">Remove</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2 px-space-md flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-primary font-bold text-[0.625rem] flex items-center justify-center">PP</div>
+<span class="font-medium text-on-surface">Priya Patel</span>
+</td>
+<td class="py-2 px-space-sm text-outline">priya.p@sentinel.io</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:outline-none">
+<option>Incident Commander (Admin)</option>
+<option>Senior SRE (Write/Execute)</option>
+<option selected="">SRE Responder (Write/Execute)</option>
+<option>Read-Only Observer</option>
+</select>
+</td>
+<td class="py-2 px-space-sm">
+<span class="px-1.5 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem]">Enforced (FIDO2)</span>
+</td>
+<td class="py-2 px-space-sm text-on-surface-variant">1h ago</td>
+<td class="py-2 px-space-md text-right">
+<button class="text-outline hover:text-error transition-colors text-[0.6875rem]">Remove</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors bg-surface-container-lowest/40">
+<td class="py-2 px-space-md flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-primary font-bold text-[0.625rem] flex items-center justify-center">MV</div>
+<span class="font-medium text-on-surface">Marcus Vance</span>
+</td>
+<td class="py-2 px-space-sm text-outline">marcus.v@sentinel.io</td>
+<td class="py-2 px-space-md">
+<select class="bg-surface-container-lowest border border-outline-variant text-outline font-label-code-sm text-[0.6875rem] rounded-DEFAULT px-2 py-0.5 focus:outline-none">
+<option>Incident Commander (Admin)</option>
+<option>Senior SRE (Write/Execute)</option>
+<option>SRE Responder (Write/Execute)</option>
+<option selected="">Read-Only Observer</option>
+</select>
+</td>
+<td class="py-2 px-space-sm">
+<span class="px-1.5 py-0.5 rounded-DEFAULT bg-secondary/10 text-secondary border border-secondary/20 text-[0.625rem]">Enforced (TOTP)</span>
+</td>
+<td class="py-2 px-space-sm text-outline">1d ago</td>
+<td class="py-2 px-space-md text-right">
+<button class="text-outline hover:text-error transition-colors text-[0.6875rem]">Remove</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- SSO / IdP Configuration Panel -->
+<div class="p-space-md rounded-DEFAULT bg-surface-container-low border border-outline-variant flex flex-col gap-space-sm">
+<div class="flex items-center justify-between border-b border-outline-variant pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">vpn_key</span>
+<div>
+<h3 class="font-headline-sm text-[0.875rem] text-on-surface font-semibold">Enterprise Identity &amp; SAML 2.0 / OIDC</h3>
+<span class="font-label-code-sm text-outline text-[0.625rem]">Centralized credential federation and auto-provisioning</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary/15 text-secondary border border-secondary/30 font-label-code-sm text-[0.625rem] font-bold">OKTA ACTIVE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-2">
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Identity Provider (IdP) Entity ID</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 font-label-code-sm text-[0.6875rem] text-primary" readonly="" type="text" value="https://sentinel-aiops.okta.com"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-code-sm text-outline text-[0.6875rem]">Metadata XML &amp; SCIM Status</label>
+<div class="flex items-center justify-between bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-2.5 py-1.5 text-on-surface font-label-code-sm text-[0.6875rem]">
+<span>Auto-synced • SCIM 2.0 Provisioning Enabled</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">sync</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between pt-space-sm mt-2 border-t border-outline-variant/60 gap-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container border-outline-variant text-primary focus:ring-0" type="checkbox"/>
+<span class="font-label-code-sm text-on-surface text-[0.6875rem]">Enforce SSO authentication for all user sessions (Bypass local login)</span>
+</label>
+<button class="px-3 py-1 bg-transparent text-primary border border-primary/30 rounded-DEFAULT font-label-code-sm text-[0.6875rem] hover:bg-primary/10 transition-colors">
+            Rotate SAML Certificate
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- FLOATING NOTIFICATION TOAST (JS TRIGGERED) -->
+<div class="fixed bottom-4 right-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none" id="action-toast">
+<div class="px-4 py-2.5 rounded-DEFAULT bg-surface-container-highest border border-primary text-on-surface font-label-code-sm text-[0.75rem] shadow-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+<span id="toast-message">Configuration saved and deployed to edge nodes.</span>
+</div>
+</div>
+</div>
+<script>
+  function switchTab(tabKey) {
+    const tabs = ['policy-editor', 'service-tiers', 'notification-routing', 'user-management'];
+    
+    tabs.forEach(key => {
+      const pane = document.getElementById('tab-pane-' + key);
+      const btn = document.getElementById('tab-btn-' + key);
+      
+      if (pane && btn) {
+        if (key === tabKey) {
+          pane.classList.remove('hidden');
+          pane.classList.add('flex');
+          
+          btn.classList.add('border-primary-container', 'text-primary', 'bg-surface-container-high/60', 'font-semibold');
+          btn.classList.remove('border-transparent', 'text-on-surface-variant');
+        } else {
+          pane.classList.remove('flex');
+          pane.classList.add('hidden');
+          
+          btn.classList.remove('border-primary-container', 'text-primary', 'bg-surface-container-high/60', 'font-semibold');
+          btn.classList.add('border-transparent', 'text-on-surface-variant');
+        }
+      }
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('action-toast');
+    const label = document.getElementById('toast-message');
+    if (!toast || !label) return;
+    
+    label.innerText = msg;
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2800);
+  }
+
+  function simulateSavePolicy() {
+    const statusMsg = document.getElementById('save-status-msg');
+    if (statusMsg) {
+      statusMsg.innerText = 'Compiling AST...';
+      setTimeout(() => {
+        statusMsg.innerText = 'Compiled & active in Envoy sidecars at ' + new Date().toLocaleTimeString();
+        showToast('remediation_safety.rego validated and published to Git branch main.');
+      }, 500);
+    }
+  }
+
+  function simulateDryRun() {
+    showToast('Dry-run test complete: PASS with zero deny directives triggered.');
+  }
+
+  function saveTierChangesToast() {
+    showToast('Updated 6 microservice tiers across core-orders, payments, identity.');
+  }
+
+  function saveNotificationSettingsToast() {
+    showToast('Slack, PagerDuty, and global suppression policies successfully updated.');
+  }
+
+  function filterServiceTable() {
+    const input = document.getElementById('service-search-input');
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById('service-tier-table');
+    if (!table) return;
+    const trs = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < trs.length; i++) {
+      const text = trs[i].textContent || trs[i].innerText;
+      if (text.toLowerCase().indexOf(filter) > -1) {
+        trs[i].style.display = "";
+      } else {
+        trs[i].style.display = "none";
+      }
+    }
+  }
+</script></main></div></body></html>

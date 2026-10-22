@@ -1,0 +1,46 @@
+# ==============================================================================
+# AIOps Sentinel - Git Attributes
+# ==============================================================================
+
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Explicit text files
+*.py text diff=python eol=lf
+*.ts text diff=javascript eol=lf
+*.tsx text diff=javascript eol=lf
+*.js text diff=javascript eol=lf
+*.jsx text diff=javascript eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.prisma text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.sh text eol=lf
+*.env.example text eol=lf
+
+# Windows-specific scripts need CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.tar.gz binary
+*.zip binary
+*.onnx binary
+*.pt binary
+*.pth binary
+*.joblib binary

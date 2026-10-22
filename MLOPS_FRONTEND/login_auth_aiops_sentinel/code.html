@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — AIOps Sentinel Mission Control</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'bg-base': '#0A0E17',
+            'panel-base': '#111827',
+            'panel-elevated': '#182030',
+            'border-subtle': '#1F2937',
+            'border-active': '#22D3EE',
+            'cyan-accent': '#22D3EE',
+            'cyan-hover': '#06B6D4',
+            'amber-warn': '#F59E0B',
+            'red-alert': '#EF4444',
+            'emerald-nominal': '#10B981',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 20%, #151d2d 0%, #0A0E17 70%, #06090e 100%);
+      font-family: 'Inter', sans-serif;
+    }
+    .grid-bg-overlay {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(31, 41, 55, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31, 41, 55, 0.25) 1px, transparent 1px);
+    }
+    .glow-glow {
+      box-shadow: 0 0 50px -10px rgba(34, 211, 238, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-200 antialiased flex flex-col justify-between relative overflow-x-hidden selection:bg-cyan-500/20 selection:text-cyan-300">
+  
+  <!-- Subtle decorative ambient background grid & radial glow -->
+  <div class="fixed inset-0 grid-bg-overlay pointer-events-none z-0"></div>
+  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+  <!-- Minimal Top Header Bar -->
+  <header class="relative z-10 w-full px-6 py-5 flex items-center justify-between border-b border-border-subtle/50 backdrop-blur-sm bg-bg-base/40">
+    <div class="flex items-center gap-3">
+      <!-- Logo Mark -->
+      <div class="w-8 h-8 rounded-lg bg-panel-base border border-border-subtle flex items-center justify-center p-1 shadow-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="w-full h-full" fill="none">
+          <polygon points="20,7 31,13.5 31,26.5 20,33 9,26.5 9,13.5" stroke="#22D3EE" stroke-width="2" fill="none" opacity="0.6"/>
+          <circle cx="20" cy="20" r="4.5" fill="#22D3EE"/>
+          <circle cx="20" cy="20" r="8" stroke="#22D3EE" stroke-width="1.2" stroke-dasharray="2 3"/>
+          <line x1="20" y1="7" x2="20" y2="15.5" stroke="#22D3EE" stroke-width="1.5"/>
+          <line x1="31" y1="26.5" x2="24" y2="22.5" stroke="#EF4444" stroke-width="1.5"/>
+          <line x1="9" y1="26.5" x2="16" y2="22.5" stroke="#F59E0B" stroke-width="1.5"/>
+          <circle cx="20" cy="7" r="2" fill="#22D3EE"/>
+          <circle cx="31" cy="26.5" r="2" fill="#EF4444"/>
+          <circle cx="9" cy="26.5" r="2" fill="#F59E0B"/>
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold tracking-widest uppercase font-mono text-white">SENTINEL</span>
+          <span class="text-[10px] tracking-wider uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">v2.4 Prod</span>
+        </div>
+        <p class="text-[10px] text-slate-500 font-mono">AIOPS CORE &bull; ZERO-COGNITIVE-LAG</p>
+      </div>
+    </div>
+
+    <!-- Cluster / Gateway Status Indicator -->
+    <div class="flex items-center gap-4 text-xs font-mono">
+      <div class="flex items-center gap-2 px-2.5 py-1 rounded border border-border-subtle bg-panel-base/60 text-slate-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-nominal animate-pulse"></span>
+        <span class="text-slate-300">Auth Gateway: Operational</span>
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-400">Latency: 9ms</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Centered Content Container -->
+  <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-[460px]">
+      
+      <!-- Primary Login Card -->
+      <div class="bg-panel-base border border-border-subtle rounded-xl p-8 shadow-2xl glow-glow relative backdrop-blur-md">
+        
+        <!-- Subtle Top Border Highlight -->
+        <div class="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-accent to-transparent opacity-80"></div>
+
+        <!-- Brand Wordmark & Header Section -->
+        <div class="text-center mb-8">
+          <!-- Logo & Platform Title -->
+          <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-slate-900 border border-border-subtle flex items-center justify-center p-1.5 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="w-full h-full" fill="none">
+                <polygon points="20,7 31,13.5 31,26.5 20,33 9,26.5 9,13.5" stroke="#22D3EE" stroke-width="2.2" fill="none" opacity="0.6"/>
+                <circle cx="20" cy="20" r="4.5" fill="#22D3EE"/>
+                <circle cx="20" cy="20" r="8" stroke="#22D3EE" stroke-width="1.2" stroke-dasharray="2 3"/>
+                <line x1="20" y1="7" x2="20" y2="15.5" stroke="#22D3EE" stroke-width="1.5"/>
+                <line x1="31" y1="26.5" x2="24" y2="22.5" stroke="#EF4444" stroke-width="1.5"/>
+                <line x1="9" y1="26.5" x2="16" y2="22.5" stroke="#F59E0B" stroke-width="1.5"/>
+                <circle cx="20" cy="7" r="2" fill="#22D3EE"/>
+                <circle cx="31" cy="26.5" r="2" fill="#EF4444"/>
+                <circle cx="9" cy="26.5" r="2" fill="#F59E0B"/>
+              </svg>
+            </div>
+            <div class="text-left">
+              <span class="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
+                AIOps <span class="text-cyan-accent">Sentinel</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-xl sm:text-[22px] font-bold text-white tracking-tight leading-snug">
+            Mission Control for Self-Healing Cloud
+          </h1>
+          
+          <!-- Subheading -->
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 font-mono">
+            Detect. Diagnose. Remediate. All in one loop.
+          </p>
+        </div>
+
+        <!-- Form Elements -->
+        <form class="space-y-4" onsubmit="event.preventDefault();">
+          
+          <!-- Email Field -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="email" class="text-xs font-medium text-slate-300">
+                Work Email
+              </label>
+              <span class="text-[11px] font-mono text-slate-500">SRE / Identity ID</span>
+            </div>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <!-- Mail Icon -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <input 
+                type="email" 
+                id="email" 
+                name="email"
+                placeholder="sarah.chen@enterprise.io" 
+                value="sarah.chen@enterprise.io"
+                class="w-full pl-10 pr-3.5 py-2.5 bg-[#0a0e17] border border-border-subtle rounded-md text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent transition-colors font-mono"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="password" class="text-xs font-medium text-slate-300">
+                Access Token / Password
+              </label>
+              <a href="#forgot" class="text-xs text-slate-400 hover:text-cyan-accent transition-colors">
+                Forgot?
+              </a>
+            </div>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <!-- Lock Icon -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <input 
+                type="password" 
+                id="password" 
+                name="password"
+                value="••••••••••••••••••••"
+                placeholder="Enter password or hardware key" 
+                class="w-full pl-10 pr-10 py-2.5 bg-[#0a0e17] border border-border-subtle rounded-md text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent transition-colors font-mono"
+                required
+              >
+              <!-- Show / Hide Password Toggle -->
+              <button 
+                type="button" 
+                id="togglePasswordBtn"
+                onclick="togglePassword()"
+                aria-label="Toggle password visibility"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-500 hover:text-slate-300 transition-colors"
+              >
+                <!-- Eye Icon (toggleable) -->
+                <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Enterprise SSO Right-aligned link -->
+          <div class="flex justify-end pt-0.5">
+            <a href="#sso" class="text-xs font-mono text-cyan-accent hover:text-cyan-300 inline-flex items-center gap-1 group font-medium transition-colors">
+              Enterprise SSO 
+              <span class="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Primary CTA Button (Cyan filled, 6px radius, full width) -->
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              class="w-full py-2.5 px-4 bg-cyan-accent hover:bg-cyan-hover text-slate-950 font-semibold rounded-[6px] text-sm tracking-wide shadow-md shadow-cyan-500/20 active:translate-y-[1px] transition-all flex items-center justify-center gap-2 group"
+            >
+              <span>Sign In</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="relative py-2.5 flex items-center">
+            <div class="flex-grow border-t border-border-subtle"></div>
+            <span class="flex-shrink mx-3 text-[11px] font-mono uppercase tracking-wider text-slate-500">OR</span>
+            <div class="flex-grow border-t border-border-subtle"></div>
+          </div>
+
+          <!-- Secondary CTA: Continue with Google (White / Outline Button) -->
+          <div>
+            <button 
+              type="button" 
+              class="w-full py-2.5 px-4 bg-[#0a0e17] hover:bg-panel-elevated text-slate-200 hover:text-white border border-border-subtle hover:border-slate-600 rounded-[6px] text-sm font-medium transition-all flex items-center justify-center gap-3 active:translate-y-[1px]"
+            >
+              <!-- Google Color G SVG -->
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.27v3.13C3.26 21.3 7.34 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.27C.46 8.2 0 10.04 0 12s.46 3.8 1.27 5.42l4.01-3.13z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.7 1.27 6.58l4.01 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
+              </svg>
+              <span>Continue with Google</span>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Security & Compliance Micro Badges -->
+        <div class="mt-6 pt-5 border-t border-border-subtle/70 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-nominal"></span>
+            <span>SOC2 Type II</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent"></span>
+            <span>mTLS & WebAuthn</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span>256-bit AES</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Card Footer -->
+      <div class="text-center mt-6">
+        <p class="text-xs text-slate-400">
+          Don't have an account? 
+          <a href="#request-access" class="text-cyan-accent hover:text-cyan-300 font-medium ml-1 transition-colors underline-offset-4 hover:underline">
+            Request Access
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Ambient Bottom NOC Telemetry Footer -->
+  <footer class="relative z-10 w-full px-6 py-4 border-t border-border-subtle/40 bg-bg-base/60 backdrop-blur-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-mono">
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-nominal"></span>
+        Global Ingress: US-East-1 (prod-core-01)
+      </span>
+      <span class="hidden sm:inline text-slate-700">&bull;</span>
+      <span class="hidden sm:inline">Incident Bridge Synchronized</span>
+    </div>
+    <div class="flex items-center gap-4 text-[11px]">
+      <a href="#privacy" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+      <a href="#terms" class="hover:text-slate-300 transition-colors">Security Specs</a>
+      <a href="#status" class="hover:text-cyan-accent transition-colors flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-nominal"></span>
+        Systems Nominal
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    function togglePassword() {
+      const input = document.getElementById('password');
+      const eyeIcon = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+        `;
+      } else {
+        input.type = 'password';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

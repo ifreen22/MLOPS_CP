@@ -1,0 +1,4 @@
+/* Custom app styles */
+.react-flow__node {
+  border-radius: 9999px;
+}
