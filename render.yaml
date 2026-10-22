@@ -12,11 +12,6 @@ services:
         fromDatabase:
           name: aiops-sentinel-db
           property: connectionString
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: aiops-sentinel-redis
-          property: connectionString
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL
@@ -35,15 +30,8 @@ services:
     dockerfilePath: aiops-sentinel/Dockerfile
     dockerContext: aiops-sentinel
     plan: free
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: aiops-sentinel-backend
-          property: url
 
 databases:
   - name: aiops-sentinel-db
     plan: free
     databaseName: aiops_sentinel
-    user: postgres
