@@ -1,0 +1,49 @@
+services:
+  # Backend API Service
+  - type: web
+    name: aiops-sentinel-backend
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aiops-sentinel-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: aiops-sentinel-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@sentinel.local
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: AGENT_API_TOKEN
+        generateValue: true
+      - key: GITHUB_WEBHOOK_SECRET
+        generateValue: true
+
+  # Frontend Web UI
+  - type: web
+    name: aiops-sentinel-frontend
+    runtime: docker
+    dockerfilePath: aiops-sentinel/Dockerfile
+    dockerContext: aiops-sentinel
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: aiops-sentinel-backend
+          property: url
+
+databases:
+  - name: aiops-sentinel-db
+    plan: free
+    databaseName: aiops_sentinel
+    user: postgres
